@@ -36,7 +36,7 @@
             opacity: 0.9;
         }
 
-        /* --- Sidebar Styles --- */
+       /* --- Sidebar Styles --- */
         .sidebar {
             height: 100%;
             width: 0;
@@ -44,8 +44,8 @@
             z-index: 10;
             top: 0;
             left: 0;
-            /* CLAVE: CAMBIO DE COLOR DEL MENÚ LATERAL A MARRÓN FORMAL */
-            background-color: #4b3621; /* Marrón Cacao Oscuro */ 
+            /* CLAVE: Fondo Marrón Cacao Oscuro */
+            background-color: #4b3621; 
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
@@ -55,28 +55,32 @@
         .sidebar-header {
             padding: 8px 8px 8px 32px;
             font-size: 25px;
-            /* Color del título (Muralpedia) en amarillo pastel para combinar con la cabecera */
+            /* Título Muralpedia: Amarillo pastel para combinar con la cabecera */
             color: #fff9c4; 
             display: block;
             margin-bottom: 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
+            /* Negritas */
+            font-weight: bold; 
         }
 
         .sidebar a {
             padding: 8px 8px 8px 32px;
             text-decoration: none;
             font-size: 18px;
-            /* Color de las letras de los apartados */
-            color: #ecf0f1; 
+            /* CLAVE: Blanco puro y brillante */
+            color: #FFFFFF; 
             display: block;
             transition: 0.3s;
             cursor: pointer;
+            /* Negritas */
+            font-weight: bold;
         }
 
         .sidebar a:hover {
-            color: white;
-            /* Hover: Marrón ligeramente más claro para el efecto de selección */
+            color: #FFFFFF;
+            /* Hover: Marrón ligeramente más claro */
             background-color: #6d5843; 
         }
 
@@ -104,6 +108,8 @@
         }
 
         #main {
+            transition: margin-left .5s;
+        }
             transition: margin-left .5s;
         }
         
@@ -217,7 +223,7 @@
 
             <div id="home-view" class="content-view">
                 <div class="mural-container">
-                    <h2>Bienvenido a Muralpedia</h2>
+                    <h2>¡Bienvenido a Muralpedia!</h2>
                     <div class="text-content">
                         <p>Muralpedia es un catálogo digital dedicado al **arte urbano de Lima**, creado para visibilizar y preservar los murales de los barrios populares de la ciudad. Nuestro objetivo es que cualquier persona pueda descubrir, conocer y apreciar la riqueza cultural, histórica y social que estos murales representan, distinguiendo entre murales urbanos, graffiti y otras intervenciones comunitarias.</p>
                         <p>En Muralpedia encontrarás murales clasificados por temáticas: **Social, Político, Cultural, Histórico, Identitario y Natural**, así como colecciones especiales que incluyen arte inspirado en música, poesía o personajes destacados. Cada mural incluye información sobre su contenido, ubicación y autoría, cuando se conoce.</p>
@@ -407,6 +413,7 @@
 
 </body>
 </html>
+
 
 
 
