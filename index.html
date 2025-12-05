@@ -9,17 +9,17 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background: #f2f2f2; /* Fondo general */
+            background: #f2f2f2;
             color: #222;
         }
 
         header {
-            background: #fff9c4; /* Amarillo pastel */
+            background: #fff9c4;
             padding: 40px;
             text-align: center;
-            color: #222; /* Texto oscuro para contraste */
+            color: #222;
             box-shadow: 0 3px 8px rgba(0,0,0,0.25);
-            position: sticky; /* Fijo en la parte superior */
+            position: sticky;
             top: 0;
             z-index: 9;
         }
@@ -58,6 +58,7 @@
             display: block;
             margin-bottom: 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
         }
 
         .sidebar a {
@@ -101,7 +102,6 @@
         #main {
             transition: margin-left .5s;
         }
-        /* --- End Sidebar Styles --- */
         
         /* --- Content/Subpage Styles --- */
         .page-content {
@@ -111,13 +111,13 @@
             font-family: Arial;
         }
 
-        /* CLAVE: Ocultar todas las vistas (subpáginas internas) por defecto */
+        /* CLAVE CSS: Oculta todas las secciones por defecto */
         .content-view {
             display: none; 
             animation: fadeIn 0.5s;
         }
 
-        /* CLAVE: Mostrar solo el Home inicialmente */
+        /* CLAVE CSS: Muestra el Home por defecto, antes de que se ejecute el JavaScript */
         #home-view {
             display: block; 
         }
@@ -157,12 +157,12 @@
 
         .image-row img {
             border-radius: 15px;
-            width: 45%; /* Ajuste para imágenes de dos en fila */
+            width: 45%;
             max-width: 320px;
             height: auto;
+            object-fit: cover; /* Asegura que la imagen se vea bien */
         }
         
-        /* Ajuste para las 3 imágenes en Pesca del día */
         #mural-natural .mural-container .image-row img {
              width: 30%;
         }
@@ -213,17 +213,15 @@
         <div class="page-content">
 
             <div id="home-view" class="content-view">
-                <div class="mural-container" style="text-align: center;">
-                    <h2>Bienvenido a Muralpedia Lima</h2>
-                    <p>Usa el menú lateral (☰) para navegar por las diferentes categorías de murales:</p>
-                    <ul style="list-style-type: none; padding: 0; max-width: 400px; margin: 20px auto;">
-                        <li>Mural Social</li>
-                        <li>Mural Político</li>
-                        <li>Mural Cultural</li>
-                        <li>Mural Histórico</li>
-                        <li>... y más!</li>
-                    </ul>
-                    <p>Selecciona una categoría para ver los detalles de las obras.</p>
+                <div class="mural-container">
+                    <h2>Bienvenido a Muralpedia</h2>
+                    <div class="text-content">
+                        <p>Muralpedia es un catálogo digital dedicado al **arte urbano de Lima**, creado para visibilizar y preservar los murales de los barrios populares de la ciudad. Nuestro objetivo es que cualquier persona pueda descubrir, conocer y apreciar la riqueza cultural, histórica y social que estos murales representan, distinguiendo entre murales urbanos, graffiti y otras intervenciones comunitarias.</p>
+                        <p>En Muralpedia encontrarás murales clasificados por temáticas: **Social, Político, Cultural, Histórico, Identitario y Natural**, así como colecciones especiales que incluyen arte inspirado en música, poesía o personajes destacados. Cada mural incluye información sobre su contenido, ubicación y autoría, cuando se conoce.</p>
+                        <p>Si eres artista o colectivo, puedes registrar tus murales siguiendo nuestros lineamientos: las imágenes deben ser de buena calidad, estar correctamente etiquetadas con título, autor o colectivo, ubicación aproximada y una breve descripción del mural. Esto permite que la comunidad conozca mejor tu trabajo y que quede registrado dentro de nuestro catálogo.</p>
+                        <p>Muralpedia nace del interés por valorar el arte callejero como **patrimonio cultural**, fomentando la participación de artistas y ciudadanos, y promoviendo la reflexión sobre la historia y la identidad de Lima a través de sus murales.</p>
+                        <p>Para mayor información o consultas, contáctanos mediante WhatsApp o correo electrónico.</p>
+                    </div>
                 </div>
             </div>
 
@@ -302,7 +300,111 @@
                         <img src="WhatsApp Image 2025-12-02 at 8.35.22 PM.jpeg" alt="Mural Acción Poética 2">
                     </div>
                     <div class="text-content">
-                        <p>Este mural se encuentra en el Jr. Teniente Arístides del Carpio - Lima. Tuvo una última
+                        <p>Este mural se encuentra en el Jr. Teniente Arístides del Carpio - Lima. Tuvo una última modificación en este año 2024. El trozo de espejo vuelve al mural una reflexión sobre identidad: obliga a que el espectador se vea dentro del barrio, mezclando lo imaginado con lo cotidiano. La paleta fría y el gesto de la figura evocan introspección y mirada crítica del propio entorno.</p>
+                        <p>Retrato femenino en tonos azules, entre sus dedos sostiene un trozo de espejo real incrustado en la pared integrando el reflejo del barrio en la obra.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="mural-social" class="content-view">
+                <div class="mural-container">
+                    <h2>Ruido visual callejero: El arte del graffiti</h2>
+                    <h3>Artista: Colectivo graffitero barrial</h3>
+                    <div class="image-row">
+                        <img src="WhatsApp Image 2025-12-02 at 9.38.32 PM.jpeg" alt="Mural Graffiti 1">
+                        <img src="WhatsApp Image 2025-12-02 at 8.49.35 PM.jpeg" alt="Mural Graffiti 2">
+                        <img src="WhatsApp Image 2025-12-02 at 8.49.35 PM (1).jpeg" alt="Mural Graffiti 3">
+                    </div>
+                    <div class="text-content">
+                        <p>Esta pared blanca se ha convertido en un lienzo vivo, un espacio donde la creatividad se desborda sin restricciones. Los grafitis se entrelazan como fragmentos de historias callejeras: frases de amor, símbolos de equipos de fútbol y pequeños dibujos que parecen susurrar la vida cotidiana del barrio. Cada trazo refleja la espontaneidad de quienes dejaron su huella anónima.</p>
+                        <p>En el centro, una flor se erige como corazón de la composición, irradiando color y energía entre los trazos que la rodean. Las líneas y formas se superponen, creando un mosaico caótico pero lleno de armonía, como si cada gesto hubiera encontrado su lugar dentro del conjunto.</p>
+                        <p>Aunque no hay un autor conocido, el mural respira la **fuerza colectiva de la comunidad**. Es un espejo de la ciudad viva, un espacio donde los vecinos, artistas o curiosos, contribuyen sin pretensiones, dejando que el arte urbano hable por todos y transforme la pared en un poema visual compartido.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mural-politico" class="content-view">
+                <div class="mural-container" style="text-align: center;">
+                    <h2>Mural Político</h2>
+                    <p>¡Contenido en construcción! Aquí aparecerán los murales con temática política.</p>
+                    <a href="javascript:void(0)" onclick="showView('home-view')">Volver al Inicio</a>
+                </div>
+            </div>
+            <div id="mural-historico" class="content-view">
+                <div class="mural-container" style="text-align: center;">
+                    <h2>Mural Histórico</h2>
+                    <p>¡Contenido en construcción! Aquí aparecerán los murales con referencias históricas.</p>
+                    <a href="javascript:void(0)" onclick="showView('home-view')">Volver al Inicio</a>
+                </div>
+            </div>
+            <div id="mural-identitario" class="content-view">
+                <div class="mural-container" style="text-align: center;">
+                    <h2>Mural Identitario</h2>
+                    <p>¡Contenido en construcción! Aquí aparecerán los murales enfocados en la identidad local.</p>
+                    <a href="javascript:void(0)" onclick="showView('home-view')">Volver al Inicio</a>
+                </div>
+            </div>
+            <div id="mural-abstracto" class="content-view">
+                <div class="mural-container" style="text-align: center;">
+                    <h2>Mural Abstracto</h2>
+                    <p>¡Contenido en construcción! Aquí aparecerán los murales de arte abstracto.</p>
+                    <a href="javascript:void(0)" onclick="showView('home-view')">Volver al Inicio</a>
+                </div>
+            </div>
+            <div id="mural-publicitario" class="content-view">
+                <div class="mural-container" style="text-align: center;">
+                    <h2>Mural Publicitario</h2>
+                    <p>¡Contenido en construcción! Aquí aparecerán los murales con fines comerciales o publicitarios.</p>
+                    <a href="javascript:void(0)" onclick="showView('home-view')">Volver al Inicio</a>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            Proyecto realizado por estudiantes de la Facultad de Letras y Ciencias Humanas — UNMSM — 2025
+        </footer>
+
+    </div>
+
+    <script>
+        // Función para mostrar la vista (subpágina interna) seleccionada
+        function showView(viewId) {
+            // 1. Ocultar todas las vistas (contenidos de subpáginas)
+            const views = document.querySelectorAll('.content-view');
+            views.forEach(view => {
+                view.style.display = 'none';
+            });
+
+            // 2. Mostrar la vista solicitada (subpágina)
+            const activeView = document.getElementById(viewId);
+            if (activeView) {
+                activeView.style.display = 'block';
+            }
+            
+            // 3. Cerrar el menú lateral después de la selección
+            closeNav();
+
+            // 4. Volver al inicio de la página para evitar que quede un desplazamiento anterior
+            // Esto es CLAVE para evitar el efecto de 'deslizamiento'.
+            window.scrollTo(0, 0); 
+        }
+
+        // Función para abrir el menú lateral
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        // Función para cerrar el menú lateral
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft= "0";
+        }
+    </script>
+
+</body>
+</html>
 
 
 
