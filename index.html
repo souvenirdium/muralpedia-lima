@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,20 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muralpedia Lima: Archivo Digital del Arte Urbano</title>
 
+    <!-- Fuente moderna y profesional -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f2f2f2;
+            font-family: "Poppins", sans-serif;
+            background: #f2f4f3;
             color: #222;
         }
 
+        /* HEADER */
         header {
-            background: linear-gradient(135deg, #ff5722, #ff9800, #ffc107);
+            background: linear-gradient(135deg, #1b5e20, #2e7d32, #4caf50);
             padding: 40px;
             text-align: center;
             color: white;
             box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+            position: relative;
         }
 
         h1 {
@@ -33,28 +39,68 @@
             opacity: 0.9;
         }
 
-        .galeria {
-            padding: 30px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+        /* MENÚ HAMBURGUESA */
+        .menu-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            user-select: none;
         }
 
-        .mural {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        /* PANEL LATERAL */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #1b1b1b;
+            overflow-x: hidden;
+            transition: 0.4s;
+            padding-top: 60px;
+            z-index: 10;
+        }
+
+        .sidebar a {
+            padding: 12px 25px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #f1f1f1;
+            display: block;
             transition: 0.3s;
         }
 
-        .mural:hover {
-            transform: scale(1.02);
+        .sidebar a:hover {
+            background: #333;
         }
 
-        .mural img {
-            width: 100%;
-            border-radius: 10px;
+        .closebtn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+        /* SECCIONES */
+        section {
+            max-width: 900px;
+            margin: auto;
+            padding: 25px;
+        }
+
+        .card {
+            margin: 40px 0;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            border-radius: 15px;
         }
 
         footer {
@@ -65,306 +111,201 @@
             margin-top: 50px;
         }
     </style>
+
+    <script>
+        function openMenu() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+        function closeMenu() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+    </script>
+
 </head>
 
 <body>
+
+    <!-- SIDEBAR -->
+    <div id="sidebar" class="sidebar">
+        <span class="closebtn" onclick="closeMenu()">&times;</span>
+        <a href="#presentacion">Presentación</a>
+        <a href="#coleccion">Colección</a>
+        <a href="#murales">— Murales / Graffiti</a>
+        <a href="#artesania">— Artesanía</a>
+        <a href="#musica">— Música</a>
+        <a href="#pintura">— Pintura en lienzo</a>
+        <a href="#contacto">Contacto</a>
+    </div>
+
+    <!-- HEADER -->
     <header>
+        <span class="menu-icon" onclick="openMenu()">&#9776;</span>
         <h1>Muralpedia Lima</h1>
         <p class="subtitulo">Archivo Digital del Arte Urbano</p>
     </header>
 
- <section style="max-width: 800px; margin: auto; padding: 20px; font-family: Arial;">
-    
- </div>
+    <!-- PRESENTACIÓN -->
+    <section id="presentacion">
+        <div class="card">
+            <h2>Presentación</h2>
+            <p style="text-align: justify; line-height: 1.7;">
+                Somos un proyecto académico desarrollado por estudiantes de la Facultad de Letras y Ciencias Humanas
+                de la Universidad Nacional Mayor de San Marcos. Nuestro propósito es registrar, preservar y difundir
+                el arte urbano presente en los barrios de Lima y Callao.
+                Esta plataforma reúne murales, graffiti, expresiones visuales y otros elementos culturales
+                que forman parte de la identidad popular contemporánea.
+            </p>
+        </div>
+    </section>
 
-    </p>
-<div style="margin: 40px 0; padding: 25px; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    <!-- COLECCIÓN -->
+    <section id="coleccion">
+        <div class="card">
+            <h2>Colección</h2>
+            <p>Explora las diversas expresiones del arte urbano y cultural.</p>
+        </div>
+    </section>
 
-    <h2 style="font-size: 28px; font-weight: bold; margin-bottom: 10px;">
-       René Poma: Mural de historia y de homenaje
-    </h2>
+    <!-- MURALES -->
+    <section id="murales">
+        <div class="card">
 
-    <h3 style="font-size: 18px; color: #333; margin-bottom: 20px;">
-        Artista: José Criroque
-    </h3>
+            <!-- TODO TU CONTENIDO DE MURALES PEGADO AQUÍ  -->
 
-    <!-- IMÁGENES LADO A LADO -->
-    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
-        <img src="481237784_966954065512589_6445432419432653713_n.jpg"
-             alt="Mural René Poma 1"
-             style="width: 45%; border-radius: 15px;">
+            <h2>Murales y Graffiti</h2>
 
-        <img src="480910177_966953732179289_875528174089231299_n.jpg"
-             alt="Mural René Poma 2"
-             style="width: 45%; border-radius: 15px;">
-    </div>
+            <!-- René Poma -->
+            <div style="margin-top: 35px;"></div>
 
-    <!-- TEXTO -->
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify;">
-        El artista José Criroque realizó este mural como proyecto de arte urbano por parte 
-        de la Municipalidad de Ventanilla, en homenaje a René Poma, quien es un fotógrafo 
-        legendario y vecino fundador de Ciudad Satélite, en Ventanilla.
-    </p>
+            <div class="card">
+                <h2>René Poma: Mural de historia y de homenaje</h2>
+                <h3>Artista: José Criroque</h3>
 
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify;">
-        El mural es un reconocimiento por su contribución a la comunidad local de Satélite 
-        en Ventanilla. El mural está ubicado en El Parque Integrador La Cabaña, también 
-        denominado “El refugio del arte”, Ventanilla, Callao, Perú.
-    </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <img src="481237784_966954065512589_6445432419432653713_n.jpg" style="width: 45%;">
+                    <img src="480910177_966953732179289_875528174089231299_n.jpg" style="width: 45%;">
+                </div>
 
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify;">
-        René Poma es pintado junto a su cámara, lo que recuerda su legado como primer 
-        fotógrafo de Ventanilla, interesado en captar la esencia de la comunidad.
-    </p>
+                <p style="text-align: justify; line-height:1.7;">
+                    El artista José Criroque realizó este mural como proyecto de arte urbano...
+                </p>
+                <p style="text-align: justify; line-height:1.7;">
+                    El mural es un reconocimiento por su contribución...
+                </p>
+                <p style="text-align: justify; line-height:1.7;">
+                    René Poma es pintado junto a su cámara...
+                </p>
+                <p style="text-align: justify; line-height:1.7;">
+                    El estilo urbano representa identidad local...
+                </p>
+            </div>
 
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify;">
-        El estilo urbano representa identidad local, cultura juvenil y arte callejero. 
-        De fondo, la playa de Ventanilla retrata su belleza y riqueza natural. 
-        Los colores vivos y saturados del mural son símbolo de orgullo, vida y optimismo.
-    </p>
+            <!-- ARIAS -->
+            <div class="card">
+                <h2>Arqueología de Cerro Culebra: Reflejo de la cultura</h2>
+                <h3>Artista: Manuel Arias</h3>
 
-</div>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <img src="480980566_966953948845934_6308306825100170503_n.jpg" style="width: 48%;">
+                    <img src="481009853_966953942179268_5691661461733904052_n.jpg" style="width: 48%;">
+                </div>
 
-    </p>
-<div style="margin: 40px 0; padding: 25px; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <p style="text-align: justify; line-height:1.7;">
+                    El artista Manuel Arias realizó un mural...
+                </p>
+                <p style="text-align: justify; line-height:1.7;">
+                    Las aves pintadas con colores vibrantes...
+                </p>
+                <p style="text-align: justify; line-height:1.7;">
+                    Este mural, ubicado en El Parque Integrador La Cabaña...
+                </p>
+            </div>
 
-    <h2 style="font-size: 28px; font-weight: bold; margin-bottom: 10px;">
-        Arqueología de Cerro Culebra: Reflejo de la cultura
-    </h2>
+            <!-- HUANSII -->
+            <div class="card">
+                <h2>Pesca del día: El hombre y el mar</h2>
+                <h3>Artista: Huansii (Pseudónimo)</h3>
 
-    <h3 style="font-size: 18px; color: #333; margin-bottom: 20px;">
-        Artista: Manuel Arias
-    </h3>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                    <img src="images.jpeg" style="width: 30%; max-width:320px;">
+                    <img src="images (1).jpeg" style="width: 30%; max-width:320px;">
+                    <img src="images (2).jpeg" style="width: 30%; max-width:320px;">
+                </div>
 
-    <!-- IMÁGENES LADO A LADO -->
-    <div style="display: flex; gap: 20px; margin-bottom: 20px;">
-        <img src="480980566_966953948845934_6308306825100170503_n.jpg"
-             alt="Mural de Cerro Culebra - Imagen 1"
-             style="width: 50%; border-radius: 15px;">
+                <p style="text-align: justify; line-height:1.7;">
+                    El artista bajo el pseudónimo de Huansii realizó este mural...
+                </p>
+            </div>
 
-        <img src="481009853_966953942179268_5691661461733904052_n.jpg"
-             alt="Mural de Cerro Culebra - Imagen 2"
-             style="width: 50%; border-radius: 15px;">
-    </div>
+            <!-- ACCION POETICA -->
+            <div class="card">
+                <h2>¿Qué eres si para tenerte solo basta con mirar al cielo?</h2>
+                <h3>Artista: Acción Poética</h3>
 
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify;">
-        El artista Manuel Arias realizó un mural como proyecto de arte urbano de la Municipalidad de Ventanilla,
-        donde retrata el mural característico de esa zona arqueológica, que fue enterrada para evitar su destrucción.
-        Los restos arqueológicos de Cerro Culebras son famosos por un mural polícromo con patrones entrelazados de peces
-        y serpientes, y el uso de colores vivos, de donde el muralista toma su inspiración.
-        
-        
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify;">
-        Las aves pintadas con colores vibrantes destacan la biodiversidad y la fauna local, entre ellas un ave marina
-        típica de la zona costera de Ventanilla.
-        La imagen de la mujer con los ojos cerrados representa la conexión con la naturaleza, además de transmitir serenidad
-        y meditación.
-        
-        
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify;">
-        Este mural, ubicado en El Parque Integrador La Cabaña, también denominado “El refugio del arte”, Ventanilla,
-        Callao, Perú, permite revalorar la historia y reafirmar la identidad.
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content:center;">
+                    <img src="quc3a9-eres-si-para-tenerte-cielo-nilton-santiago.jpg" style="width:30%; max-width:320px;">
+                    <img src="WhatsApp Image 2025-12-02 at 8.35.22 PM.jpeg" style="width:30%; max-width:320px;">
+                </div>
 
-        
-</p>
+                <p style="text-align: justify; line-height:1.7;">
+                    Este mural se encuentra en el Jr. Teniente...
+                </p>
+            </div>
 
-</div>
+            <!-- LEXFRY -->
+            <div class="card">
+                <h2>Lexfry y la cultura: Conexión y La Naturaleza Mística</h2>
+                <h3>Artista: Lexfry</h3>
 
-    </p>
-<div style="margin: 40px 0; padding: 25px; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content:center;">
+                    <img src="WhatsApp Image 2025-12-02 at 8.49.26 PM (2).jpeg" style="width:45%;">
+                    <img src="WhatsApp Image 2025-12-02 at 8.49.26 PM (3).jpeg" style="width:45%;">
+                </div>
 
-    <h2 style="font-size: 28px; font-weight: bold; margin-bottom: 10px;">
-        Pesca del día: El hombre y el mar
-    </h2>
+                <p style="text-align: justify; line-height:1.7;">
+                    Lexfry Art es un artista callejero peruano...
+                </p>
+            </div>
 
-    <h3 style="font-size: 18px; color: #333; margin-bottom: 20px;">
-        Artista: Huansii (Pseudónimo)
-    </h3>
+            <!-- COLECTIVO GRAFFITI -->
+            <div class="card">
+                <h2>Ruido visual callejero: El arte del graffiti</h2>
+                <h3>Artista: Colectivo graffitero barrial</h3>
 
-    <!-- IMÁGENES LADO A LADO -->
-    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
-        <img src="images.jpeg"
-             alt="Mural La Pesca del Día 1"
-             style="width: 30%; max-width: 320px; border-radius: 15px;">
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content:center;">
+                    <img src="WhatsApp Image 2025-12-02 at 9.38.32 PM.jpeg" style="width:45%;">
+                    <img src="WhatsApp Image 2025-12-02 at 8.49.35 PM.jpeg" style="width:45%;">
+                    <img src="WhatsApp Image 2025-12-02 at 8.49.35 PM (1).jpeg" style="width:45%;">
+                </div>
 
-        <img src="images (1).jpeg"
-             alt="Mural La Pesca del Día 2"
-             style="width: 30%; max-width: 320px; border-radius: 15px;">
+                <p style="text-align: justify; line-height:1.7;">
+                    Esta pared blanca se ha convertido en un lienzo vivo...
+                </p>
+            </div>
 
-        <img src="images (2).jpeg"
-             alt="Mural La Pesca del Día 3"
-             style="width: 30%; max-width: 320px; border-radius: 15px;">
-    </div>
+        </div>
+    </section>
 
-    <!-- TEXTO -->
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify; margin: 0 0 12px 0;">
-        El artista bajo el pseudónimo de “Huansii” realizó este mural en el mes de octubre de 2025, 
-        con el objetivo de retratar la biodiversidad y la gente de su amada Ventanilla.
-    </p>
+    <!-- OTRAS SECCIONES VACÍAS -->
+    <section id="artesania"><div class="card"><h2>Artesanía</h2><p>Próximamente.</p></div></section>
+    <section id="musica"><div class="card"><h2>Música</h2><p>Próximamente.</p></div></section>
+    <section id="pintura"><div class="card"><h2>Pintura en lienzo</h2><p>Próximamente.</p></div></section>
 
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify; margin: 0 0 12px 0;">
-        Esta obra de colores brillantes y de composición diversa crea una especie de paisaje que refleja la 
-        identidad cultural. Los peces y el ave hablan acerca de la identidad costera de Ventanilla.
-    </p>
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <div class="card">
+            <h2>Contacto</h2>
+            <p>Correo institucional: ejemplo@unmsm.edu.pe</p>
+            <p>Responsable del proyecto: Esteban C.</p>
+        </div>
+    </section>
 
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify; margin: 0 0 12px 0;">
-        Por su parte, la imagen del mototaxi —un vehículo muy común— hace referencia a la vida 
-        cotidiana urbana y funciona también como símbolo de trabajo y esfuerzo diario.
-    </p>
-
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify; margin: 0;">
-        Este mural no solo exalta una identidad colectiva, sino que también permite valorar la biodiversidad.
-    </p>
-</p>
-
-</div>
-
-    </p>
-<div style="margin: 40px 0; padding: 25px; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-
-    <h2 style="font-size: 28px; font-weight: bold; margin-bottom: 10px;">
-       ¿Qué eres si para tenerte solo basta con mirar al cielo?: Poesía en la pared
-    </h2>
-
-    <h3 style="font-size: 18px; color: #333; margin-bottom: 20px;">
-        Artista: Acción Poética
-    </h3>
-
-    <!-- IMÁGENES LADO A LADO -->
-    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
-        <img src="quc3a9-eres-si-para-tenerte-cielo-nilton-santiago.jpg"
-             style="width: 30%; max-width: 320px; border-radius: 15px;">
-
-        <img src="WhatsApp Image 2025-12-02 at 8.35.22 PM.jpeg"
-             style="width: 30%; max-width: 320px; border-radius: 15px;">
-
-    
-    </div>
-
-    <!-- TEXTO -->
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify; margin: 0 0 12px 0;">
-        Este mural se encuentra en el Jr. Teniente Arístides del Carpio - Lima. Tuvo una última 
-        modificación en este año 2024.El trozo de espejo vuelve al mural una reflexión sobre 
-        identidad: obliga a que el espectador se vea dentro del barrio, mezclando lo imaginado con 
-        lo cotidiano. La paleta fría y el gesto de la figura evocan introspección y mirada crítica 
-        del propio entorno.
-    </p>
-
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify; margin: 0 0 12px 0;">
-        Retrato femenino en tonos azules, entre sus dedos sostiene un trozo de espejo real 
-        incrustado en la pared integrando el reflejo del barrio en la obra. 
-    </p>
-    </p>
-
-</div>
-
-    </p>
-<div style="margin: 40px 0; padding: 25px; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-
-    <h2 style="font-size: 28px; font-weight: bold; margin-bottom: 10px;">
-       Lexfry y la cultura: Conexión y La Naturaleza Mística
-    </h2>
-
-    <h3 style="font-size: 18px; color: #333; margin-bottom: 20px;">
-        Artista: Lexfry
-    </h3>
-
-   
- <!-- IMÁGENES LADO A LADO -->
-    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
-       
-        <img src="WhatsApp Image 2025-12-02 at 8.49.26 PM (2).jpeg"
-             style="width: 45%; border-radius: 15px;">
-
-        <img src="WhatsApp Image 2025-12-02 at 8.49.26 PM (3).jpeg"
-             style="width: 45%; border-radius: 15px;">
-    </div>
-    <!-- TEXTO -->
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify; margin: 0 0 12px 0;">
-        Lexfry Art es un artista callejero peruano cuya obra destaca por su capacidad de conectar
-        la cultura visual contemporánea con las raíces simbólicas del país. Participa constantemente
-        en actividades sociales y comunitarias, llevando el arte a espacios públicos donde combina 
-        historia, identidad y un estilo vibrante que dialoga con lo cotidiano. Sus murales suelen
-        mezclar elementos culturales, naturaleza y figuras humanas, creando composiciones que 
-        invitan a reflexionar sobre la memoria y la tradición.
-    </p>
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify; margin: 0 0 12px 0;">
-        En su mural “Conexión”, Lexfry retoma la iconografía andina para representar a una mujer 
-        con sombrero de paja cargando, en su lliclla, una serie de elementos que evocan la herencia
-        cultural: edificaciones coloniales, símbolos como el tumi y detalles que remiten a la 
-        continuidad entre pasado y presente. La figura femenina se convierte en un puente visual, 
-        portadora de una historia colectiva que sigue viva en la memoria de los pueblos andinos.
-    </p>  
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify; margin: 0 0 12px 0;">
-       El segundo mural, sin título, expone nuevamente a una mujer andina, esta vez en diálogo visual 
-        con una joven y un colibrí. La escena sugiere la convivencia entre generaciones y la presencia
-        de lo místico en la vida cotidiana. Aquí, Lexfry explora la fantasía natural que caracterizó la
-        cosmovisión andina: animales que acompañan, espíritus que observan y un mundo donde lo espiritual
-        y lo humano se entrelazan de manera íntima y armoniosa.
-    </p>
-</p>
-
-</div>
-
-    </p>
-<div style="margin: 40px 0; padding: 25px; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-
-    <h2 style="font-size: 28px; font-weight: bold; margin-bottom: 10px;">
-       Ruido visual callejero: El arte del graffiti
-    </h2>
-
-    <h3 style="font-size: 18px; color: #333; margin-bottom: 20px;">
-        Artista: Colectivo graffitero barrial
-    </h3>
-
-   
- <!-- IMÁGENES LADO A LADO -->
-    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
-        
-        <img src="WhatsApp Image 2025-12-02 at 9.38.32 PM.jpeg"
-             style="width: 45%; border-radius: 15px;">
-        
-        <img src="WhatsApp Image 2025-12-02 at 8.49.35 PM.jpeg"
-             style="width: 45%; border-radius: 15px;">
-
-        <img src="WhatsApp Image 2025-12-02 at 8.49.35 PM (1).jpeg"
-             style="width: 45%; border-radius: 15px;">
-    </div>
-    <!-- TEXTO -->
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify; margin: 0 0 12px 0;">
-        Esta pared blanca se ha convertido en un lienzo vivo, un espacio donde la creatividad 
-        se desborda sin restricciones. Los grafitis se entrelazan como fragmentos de historias 
-        callejeras: frases de amor, símbolos de equipos de fútbol y pequeños dibujos que parecen 
-        susurrar la vida cotidiana del barrio. Cada trazo refleja la espontaneidad de quienes 
-        dejaron su huella anónima.
-    </p>
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify; margin: 0 0 12px 0;">
-        En el centro, una flor se erige como corazón de la composición, irradiando color y energía 
-        entre los trazos que la rodean. Las líneas y formas se superponen, creando un mosaico caótico 
-        pero lleno de armonía, como si cada gesto hubiera encontrado su lugar dentro del conjunto.
-    </p>  
-    <p style="font-size: 17px; line-height: 1.7; text-align: justify; margin: 0 0 12px 0;">
-       Aunque no hay un autor conocido, el mural respira la fuerza colectiva de la comunidad. Es un espejo 
-        de la ciudad viva, un espacio donde los vecinos, artistas o curiosos, contribuyen sin pretensiones, dejando 
-        que el arte urbano hable por todos y transforme la pared en un poema visual compartido.
-    </p>
-</div>
-
-</div>
-
-</section>
-
-
-<footer>
-    Proyecto realizado por estudiantes de la Facultad de Letras y Ciencias Humanas — UNMSM — 2025
-</footer>
+    <footer>
+        Proyecto realizado por estudiantes de la Facultad de Letras y Ciencias Humanas — UNMSM — 2025
+    </footer>
 
 </body>
 </html>
-
-
-
-
 
 
 
