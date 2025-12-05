@@ -364,29 +364,40 @@
     <footer>
         <p>¡Contáctanos! - +51 984 178 885 - esteban.capillo.b@gmail.com</p>
     </footer>
-
     <script>
-       const sidebar = document.getElementById("mySidebar");
+const sidebar = document.getElementById("mySidebar");
+const main = document.getElementById("main");
+let sidebarOpen = false; // controla si la barra está abierta por clic
 
-// Abrir la barra al pasar el cursor
-sidebar.addEventListener("mouseenter", () => {
+// Función para abrir la barra por clic
+function openNav() {
     sidebar.style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-});
+    main.style.marginLeft = "250px";
+    sidebarOpen = true; // queda abierta
+}
 
-// Cerrar la barra cuando el cursor se aleja
-sidebar.addEventListener("mouseleave", () => {
+// Función para cerrar la barra por clic
+function closeNav() {
     sidebar.style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
+    main.style.marginLeft = "0";
+    sidebarOpen = false; // queda cerrada
+}
+
+// Hover automático solo si la barra NO está abierta por clic
+sidebar.addEventListener("mouseenter", () => {
+    if (!sidebarOpen) {
+        sidebar.style.width = "250px";
+        main.style.marginLeft = "250px";
+    }
 });
 
-    </script>
-
-</body>
-</html>
-
-
-
+sidebar.addEventListener("mouseleave", () => {
+    if (!sidebarOpen) {
+        sidebar.style.width = "0";
+        main.style.marginLeft = "0";
+    }
+});
+</script>
 
 
 
