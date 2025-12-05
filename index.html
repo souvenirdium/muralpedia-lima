@@ -11,8 +11,6 @@
             font-family: Arial, Helvetica, sans-serif;
             background: #f2f2f2; /* Fondo general */
             color: #222;
-            /* AÑADIDO: Offset para que los anclas no se escondan detrás del header */
-            scroll-padding-top: 100px; 
         }
 
         header {
@@ -21,15 +19,15 @@
             text-align: center;
             color: #222; /* Texto oscuro para contraste */
             box-shadow: 0 3px 8px rgba(0,0,0,0.25);
-            position: sticky; /* Hacemos el header fijo */
+            position: sticky; /* Fijo en la parte superior */
             top: 0;
-            z-index: 9; /* Para que quede encima de todo, menos del sidebar */
+            z-index: 9;
         }
 
         h1 {
             font-size: 2.8rem;
             margin: 0;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* Sutil para resaltar */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         }
 
         p.subtitulo {
@@ -38,15 +36,15 @@
             opacity: 0.9;
         }
 
-        /* --- Estilos para el Sidebar / Menú de Navegación --- */
+        /* --- Sidebar Styles --- */
         .sidebar {
             height: 100%;
-            width: 0; /* Inicialmente oculto */
+            width: 0;
             position: fixed;
             z-index: 10;
             top: 0;
             left: 0;
-            background-color: #34495e; /* Azul oscuro/grisáceo */
+            background-color: #34495e;
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
@@ -55,9 +53,8 @@
 
         .sidebar-header {
             padding: 8px 8px 8px 32px;
-            text-decoration: none;
             font-size: 25px;
-            color: #fff9c4; /* Amarillo pastel para el título */
+            color: #fff9c4;
             display: block;
             margin-bottom: 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -67,9 +64,10 @@
             padding: 8px 8px 8px 32px;
             text-decoration: none;
             font-size: 18px;
-            color: #ecf0f1; /* Gris claro */
+            color: #ecf0f1;
             display: block;
             transition: 0.3s;
+            cursor: pointer; /* Indica que es clickable */
         }
 
         .sidebar a:hover {
@@ -87,7 +85,6 @@
             text-decoration: none;
         }
 
-        /* Botón de Hamburguesa */
         .openbtn {
             font-size: 25px;
             cursor: pointer;
@@ -98,21 +95,36 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            z-index: 5;
+            z-index: 10;
         }
 
-        /* Estilo para el contenido de la página para moverlo al abrir el menú */
         #main {
             transition: margin-left .5s;
-            padding: 0; /* Ajustamos el padding para controlarlo mejor en el section */
         }
-        /* --- Fin Estilos para el Sidebar --- */
+        /* --- End Sidebar Styles --- */
+        
+        /* --- Content/Subpage Styles --- */
+        .page-content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            font-family: Arial;
+        }
 
-        .galeria {
-            padding: 30px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+        /* Clase para ocultar el contenido. Todos los contenidos (excepto el Home) inician ocultos. */
+        .content-view {
+            display: none; 
+            animation: fadeIn 0.5s;
+        }
+
+        /* El Home (página de inicio) siempre se muestra si ninguna sección está seleccionada */
+        #home-view {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .mural-container {
@@ -145,6 +157,14 @@
 
         .image-row img {
             border-radius: 15px;
+            width: 45%; /* Ajuste para imágenes de dos en fila */
+            max-width: 320px;
+            height: auto;
+        }
+        
+        /* Ajuste para las 3 imágenes en Pesca del día */
+        #mural-natural .image-row img {
+             width: 30%;
         }
 
         .text-content p {
@@ -169,17 +189,17 @@
 
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="sidebar-header">Muralpedia</div>
-        <a href="#mural-social" onclick="closeNav()">Mural Social</a>
-        <a href="#mural-politico" onclick="closeNav()">Mural Político</a>
-        <a href="#mural-cultural" onclick="closeNav()">Mural Cultural</a>
-        <a href="#mural-historico" onclick="closeNav()">Mural Histórico</a>
-        <a href="#mural-identitario" onclick="closeNav()">Mural Identitario</a>
-        <a href="#mural-natural" onclick="closeNav()">Mural Natural</a>
-        <a href="#mural-abstracto" onclick="closeNav()">Mural Abstracto</a>
-        <a href="#mural-publicitario" onclick="closeNav()">Mural Publicitario</a>
-        <a href="#mural-literario" onclick="closeNav()">Mural Literario</a>
-        <a href="#mural-homenaje" onclick="closeNav()">Mural Homenaje</a>
+        <a href="javascript:void(0)" class="sidebar-header" onclick="showView('home-view')">Muralpedia</a>
+        <a onclick="showView('mural-social')">Mural Social</a>
+        <a onclick="showView('mural-politico')">Mural Político</a>
+        <a onclick="showView('mural-cultural')">Mural Cultural</a>
+        <a onclick="showView('mural-historico')">Mural Histórico</a>
+        <a onclick="showView('mural-identitario')">Mural Identitario</a>
+        <a onclick="showView('mural-natural')">Mural Natural</a>
+        <a onclick="showView('mural-abstracto')">Mural Abstracto</a>
+        <a onclick="showView('mural-publicitario')">Mural Publicitario</a>
+        <a onclick="showView('mural-literario')">Mural Literario</a>
+        <a onclick="showView('mural-homenaje')">Mural Homenaje</a>
     </div>
 
     <div id="main">
@@ -190,18 +210,34 @@
             <p class="subtitulo">Archivo Digital del Arte Urbano</p>
         </header>
 
-        <section style="max-width: 800px; margin: auto; padding: 20px; font-family: Arial;">
+        <div class="page-content">
 
-            <div id="mural-homenaje" class="content-section">
+            <div id="home-view" class="content-view">
+                <div class="mural-container" style="text-align: center;">
+                    <h2>Bienvenido a Muralpedia Lima</h2>
+                    <p>Usa el menú lateral (☰) para navegar por las diferentes categorías de murales:</p>
+                    <ul style="list-style-type: none; padding: 0; max-width: 400px; margin: 20px auto;">
+                        <li>Mural Social</li>
+                        <li>Mural Político</li>
+                        <li>Mural Cultural</li>
+                        <li>Mural Histórico</li>
+                        <li>... y más!</li>
+                    </ul>
+                    <p>Selecciona una categoría para ver los detalles de las obras.</p>
+                </div>
+            </div>
+
+
+            <div id="mural-homenaje" class="content-view">
                 <div class="mural-container">
                     <h2>René Poma: Mural de historia y de homenaje</h2>
-                    <h3 style="font-size: 18px; color: #333; margin-bottom: 20px;">Artista: José Criroque</h3>
+                    <h3>Artista: José Criroque</h3>
                     <div class="image-row">
-                        <img src="481237784_966954065512589_6445432419432653713_n.jpg" alt="Mural René Poma 1" style="width: 45%;">
-                        <img src="480910177_966953732179268_875528174089231299_n.jpg" alt="Mural René Poma 2" style="width: 45%;">
+                        <img src="481237784_966954065512589_6445432419432653713_n.jpg" alt="Mural René Poma 1">
+                        <img src="480910177_966953732179289_875528174089231299_n.jpg" alt="Mural René Poma 2">
                     </div>
                     <div class="text-content">
-                        <p>El artista José Criroque realizó este mural como proyecto de arte urbano por parte de la Municipalidad de Ventanilla, en homenaje a **René Poma**, quien es un fotógrafo legendario y vecino fundador de Ciudad Satélite, en Ventanilla.</p>
+                        <p>El artista José Criroque realizó este mural como proyecto de arte urbano por parte de la Municipalidad de Ventanilla, en homenaje a René Poma, quien es un fotógrafo legendario y vecino fundador de Ciudad Satélite, en Ventanilla.</p>
                         <p>El mural es un reconocimiento por su contribución a la comunidad local de Satélite en Ventanilla. El mural está ubicado en El Parque Integrador La Cabaña, también denominado “El refugio del arte”, Ventanilla, Callao, Perú.</p>
                         <p>René Poma es pintado junto a su cámara, lo que recuerda su legado como primer fotógrafo de Ventanilla, interesado en captar la esencia de la comunidad.</p>
                         <p>El estilo urbano representa identidad local, cultura juvenil y arte callejero. De fondo, la playa de Ventanilla retrata su belleza y riqueza natural. Los colores vivos y saturados del mural son símbolo de orgullo, vida y optimismo.</p>
@@ -209,16 +245,16 @@
                 </div>
             </div>
 
-            <div id="mural-cultural" class="content-section">
+            <div id="mural-cultural" class="content-view">
                 <div class="mural-container">
                     <h2>Arqueología de Cerro Culebra: Reflejo de la cultura</h2>
-                    <h3 style="font-size: 18px; color: #333; margin-bottom: 20px;">Artista: Manuel Arias</h3>
+                    <h3>Artista: Manuel Arias</h3>
                     <div class="image-row">
-                        <img src="480980566_966953948845934_6308306825100170503_n.jpg" alt="Mural de Cerro Culebra - Imagen 1" style="width: 50%;">
-                        <img src="481009853_966953942179268_5691661461733904052_n.jpg" alt="Mural de Cerro Culebra - Imagen 2" style="width: 50%;">
+                        <img src="480980566_966953948845934_6308306825100170503_n.jpg" alt="Mural de Cerro Culebra - Imagen 1">
+                        <img src="481009853_966953942179268_5691661461733904052_n.jpg" alt="Mural de Cerro Culebra - Imagen 2">
                     </div>
                     <div class="text-content">
-                        <p>El artista Manuel Arias realizó un mural como proyecto de arte urbano de la Municipalidad de Ventanilla, donde retrata el mural característico de esa zona arqueológica, que fue enterrada para evitar su destrucción. Los restos arqueológicos de **Cerro Culebras** son famosos por un mural polícromo con patrones entrelazados de peces y serpientes, y el uso de colores vivos, de donde el muralista toma su inspiración.</p>
+                        <p>El artista Manuel Arias realizó un mural como proyecto de arte urbano de la Municipalidad de Ventanilla, donde retrata el mural característico de esa zona arqueológica, que fue enterrada para evitar su destrucción. Los restos arqueológicos de Cerro Culebras son famosos por un mural polícromo con patrones entrelazados de peces y serpientes, y el uso de colores vivos, de donde el muralista toma su inspiración.</p>
                         <p>Las aves pintadas con colores vibrantes destacan la biodiversidad y la fauna local, entre ellas un ave marina típica de la zona costera de Ventanilla. La imagen de la mujer con los ojos cerrados representa la conexión con la naturaleza, además de transmitir serenidad y meditación.</p>
                         <p>Este mural, ubicado en El Parque Integrador La Cabaña, también denominado “El refugio del arte”, Ventanilla, Callao, Perú, permite revalorar la historia y reafirmar la identidad.</p>
                     </div>
@@ -226,30 +262,30 @@
                 
                 <div class="mural-container">
                     <h2>Lexfry y la cultura: Conexión y La Naturaleza Mística</h2>
-                    <h3 style="font-size: 18px; color: #333; margin-bottom: 20px;">Artista: Lexfry</h3>
+                    <h3>Artista: Lexfry</h3>
                     <div class="image-row">
-                        <img src="WhatsApp Image 2025-12-02 at 8.49.26 PM (2).jpeg" style="width: 45%;">
-                        <img src="WhatsApp Image 2025-12-02 at 8.49.26 PM (3).jpeg" style="width: 45%;">
+                        <img src="WhatsApp Image 2025-12-02 at 8.49.26 PM (2).jpeg" alt="Mural Lexfry Conexión 1">
+                        <img src="WhatsApp Image 2025-12-02 at 8.49.26 PM (3).jpeg" alt="Mural Lexfry Conexión 2">
                     </div>
                     <div class="text-content">
-                        <p>**Lexfry Art** es un artista callejero peruano cuya obra destaca por su capacidad de conectar la cultura visual contemporánea con las raíces simbólicas del país. Participa constantemente en actividades sociales y comunitarias, llevando el arte a espacios públicos donde combina historia, identidad y un estilo vibrante que dialoga con lo cotidiano. Sus murales suelen mezclar elementos culturales, naturaleza y figuras humanas, creando composiciones que invitan a reflexionar sobre la memoria y la tradición.</p>
-                        <p>En su mural **“Conexión”**, Lexfry retoma la iconografía andina para representar a una mujer con sombrero de paja cargando, en su lliclla, una serie de elementos que evocan la herencia cultural: edificaciones coloniales, símbolos como el tumi y detalles que remiten a la continuidad entre pasado y presente. La figura femenina se convierte en un puente visual, portadora de una historia colectiva que sigue viva en la memoria de los pueblos andinos.</p>
+                        <p>Lexfry Art es un artista callejero peruano cuya obra destaca por su capacidad de conectar la cultura visual contemporánea con las raíces simbólicas del país. Participa constantemente en actividades sociales y comunitarias, llevando el arte a espacios públicos donde combina historia, identidad y un estilo vibrante que dialoga con lo cotidiano. Sus murales suelen mezclar elementos culturales, naturaleza y figuras humanas, creando composiciones que invitan a reflexionar sobre la memoria y la tradición.</p>
+                        <p>En su mural “Conexión”, Lexfry retoma la iconografía andina para representar a una mujer con sombrero de paja cargando, en su lliclla, una serie de elementos que evocan la herencia cultural: edificaciones coloniales, símbolos como el tumi y detalles que remiten a la continuidad entre pasado y presente. La figura femenina se convierte en un puente visual, portadora de una historia colectiva que sigue viva en la memoria de los pueblos andinos.</p>
                         <p>El segundo mural, sin título, expone nuevamente a una mujer andina, esta vez en diálogo visual con una joven y un colibrí. La escena sugiere la convivencia entre generaciones y la presencia de lo místico en la vida cotidiana. Aquí, Lexfry explora la fantasía natural que caracterizó la cosmovisión andina: animales que acompañan, espíritus que observan y un mundo donde lo espiritual y lo humano se entrelazan de manera íntima y armoniosa.</p>
                     </div>
                 </div>
             </div>
 
-            <div id="mural-natural" class="content-section">
+            <div id="mural-natural" class="content-view">
                 <div class="mural-container">
                     <h2>Pesca del día: El hombre y el mar</h2>
-                    <h3 style="font-size: 18px; color: #333; margin-bottom: 20px;">Artista: Huansii (Pseudónimo)</h3>
+                    <h3>Artista: Huansii (Pseudónimo)</h3>
                     <div class="image-row">
-                        <img src="images.jpeg" alt="Mural La Pesca del Día 1" style="width: 30%; max-width: 320px;">
-                        <img src="images (1).jpeg" alt="Mural La Pesca del Día 2" style="width: 30%; max-width: 320px;">
-                        <img src="images (2).jpeg" alt="Mural La Pesca del Día 3" style="width: 30%; max-width: 320px;">
+                        <img src="images.jpeg" alt="Mural La Pesca del Día 1">
+                        <img src="images (1).jpeg" alt="Mural La Pesca del Día 2">
+                        <img src="images (2).jpeg" alt="Mural La Pesca del Día 3">
                     </div>
                     <div class="text-content">
-                        <p>El artista bajo el pseudónimo de “**Huansii**” realizó este mural en el mes de octubre de 2025, con el objetivo de retratar la **biodiversidad** y la gente de su amada Ventanilla.</p>
+                        <p>El artista bajo el pseudónimo de “Huansii” realizó este mural en el mes de octubre de 2025, con el objetivo de retratar la biodiversidad y la gente de su amada Ventanilla.</p>
                         <p>Esta obra de colores brillantes y de composición diversa crea una especie de paisaje que refleja la identidad cultural. Los peces y el ave hablan acerca de la identidad costera de Ventanilla.</p>
                         <p>Por su parte, la imagen del mototaxi —un vehículo muy común— hace referencia a la vida cotidiana urbana y funciona también como símbolo de trabajo y esfuerzo diario.</p>
                         <p>Este mural no solo exalta una identidad colectiva, sino que también permite valorar la biodiversidad.</p>
@@ -257,13 +293,13 @@
                 </div>
             </div>
 
-            <div id="mural-literario" class="content-section">
+            <div id="mural-literario" class="content-view">
                 <div class="mural-container">
                     <h2>¿Qué eres si para tenerte solo basta con mirar al cielo?: Poesía en la pared</h2>
-                    <h3 style="font-size: 18px; color: #333; margin-bottom: 20px;">Artista: Acción Poética</h3>
+                    <h3>Artista: Acción Poética</h3>
                     <div class="image-row">
-                        <img src="quc3a9-eres-si-para-tenerte-cielo-nilton-santiago.jpg" style="width: 30%; max-width: 320px;">
-                        <img src="WhatsApp Image 2025-12-02 at 8.35.22 PM.jpeg" style="width: 30%; max-width: 320px;">
+                        <img src="quc3a9-eres-si-para-tenerte-cielo-nilton-santiago.jpg" alt="Mural Acción Poética 1">
+                        <img src="WhatsApp Image 2025-12-02 at 8.35.22 PM.jpeg" alt="Mural Acción Poética 2">
                     </div>
                     <div class="text-content">
                         <p>Este mural se encuentra en el Jr. Teniente Arístides del Carpio - Lima. Tuvo una última modificación en este año 2024. El trozo de espejo vuelve al mural una reflexión sobre identidad: obliga a que el espectador se vea dentro del barrio, mezclando lo imaginado con lo cotidiano. La paleta fría y el gesto de la figura evocan introspección y mirada crítica del propio entorno.</p>
@@ -272,31 +308,55 @@
                 </div>
             </div>
             
-            <div id="mural-social" class="content-section">
+            <div id="mural-social" class="content-view">
                 <div class="mural-container">
                     <h2>Ruido visual callejero: El arte del graffiti</h2>
-                    <h3 style="font-size: 18px; color: #333; margin-bottom: 20px;">Artista: Colectivo graffitero barrial</h3>
+                    <h3>Artista: Colectivo graffitero barrial</h3>
                     <div class="image-row">
-                        <img src="WhatsApp Image 2025-12-02 at 9.38.32 PM.jpeg" style="width: 45%;">
-                        <img src="WhatsApp Image 2025-12-02 at 8.49.35 PM.jpeg" style="width: 45%;">
-                        <img src="WhatsApp Image 2025-12-02 at 8.49.35 PM (1).jpeg" style="width: 45%;">
+                        <img src="WhatsApp Image 2025-12-02 at 9.38.32 PM.jpeg" alt="Mural Graffiti 1">
+                        <img src="WhatsApp Image 2025-12-02 at 8.49.35 PM.jpeg" alt="Mural Graffiti 2">
+                        <img src="WhatsApp Image 2025-12-02 at 8.49.35 PM (1).jpeg" alt="Mural Graffiti 3">
                     </div>
                     <div class="text-content">
                         <p>Esta pared blanca se ha convertido en un lienzo vivo, un espacio donde la creatividad se desborda sin restricciones. Los grafitis se entrelazan como fragmentos de historias callejeras: frases de amor, símbolos de equipos de fútbol y pequeños dibujos que parecen susurrar la vida cotidiana del barrio. Cada trazo refleja la espontaneidad de quienes dejaron su huella anónima.</p>
                         <p>En el centro, una flor se erige como corazón de la composición, irradiando color y energía entre los trazos que la rodean. Las líneas y formas se superponen, creando un mosaico caótico pero lleno de armonía, como si cada gesto hubiera encontrado su lugar dentro del conjunto.</p>
-                        <p>Aunque no hay un autor conocido, el mural respira la **fuerza colectiva de la comunidad**. Es un espejo de la ciudad viva, un espacio donde los vecinos, artistas o curiosos, contribuyen sin pretensiones, dejando que el arte urbano hable por todos y transforme la pared en un poema visual compartido.</p>
+                        <p>Aunque no hay un autor conocido, el mural respira la fuerza colectiva de la comunidad. Es un espejo de la ciudad viva, un espacio donde los vecinos, artistas o curiosos, contribuyen sin pretensiones, dejando que el arte urbano hable por todos y transforme la pared en un poema visual compartido.</p>
                     </div>
                 </div>
             </div>
 
-            <div id="mural-politico" class="content-section"></div>
-            <div id="mural-historico" class="content-section"></div>
-            <div id="mural-identitario" class="content-section"></div>
-            <div id="mural-abstracto" class="content-section"></div>
-            <div id="mural-publicitario" class="content-section"></div>
+            <div id="mural-politico" class="content-view">
+                <div class="mural-container" style="text-align: center;">
+                    <h2>Mural Político</h2>
+                    <p>¡Contenido en construcción! Aquí aparecerán los murales con temática política.</p>
+                </div>
+            </div>
+            <div id="mural-historico" class="content-view">
+                <div class="mural-container" style="text-align: center;">
+                    <h2>Mural Histórico</h2>
+                    <p>¡Contenido en construcción! Aquí aparecerán los murales con referencias históricas.</p>
+                </div>
+            </div>
+            <div id="mural-identitario" class="content-view">
+                <div class="mural-container" style="text-align: center;">
+                    <h2>Mural Identitario</h2>
+                    <p>¡Contenido en construcción! Aquí aparecerán los murales enfocados en la identidad local.</p>
+                </div>
+            </div>
+            <div id="mural-abstracto" class="content-view">
+                <div class="mural-container" style="text-align: center;">
+                    <h2>Mural Abstracto</h2>
+                    <p>¡Contenido en construcción! Aquí aparecerán los murales de arte abstracto.</p>
+                </div>
+            </div>
+            <div id="mural-publicitario" class="content-view">
+                <div class="mural-container" style="text-align: center;">
+                    <h2>Mural Publicitario</h2>
+                    <p>¡Contenido en construcción! Aquí aparecerán los murales con fines comerciales o publicitarios.</p>
+                </div>
+            </div>
 
-        </section>
-
+        </div>
 
         <footer>
             Proyecto realizado por estudiantes de la Facultad de Letras y Ciencias Humanas — UNMSM — 2025
@@ -305,6 +365,21 @@
     </div>
 
     <script>
+        /* Función para mostrar la vista (subpágina interna) seleccionada */
+        function showView(viewId) {
+            // 1. Ocultar todas las vistas (contenidos de subpáginas)
+            const views = document.querySelectorAll('.content-view');
+            views.forEach(view => {
+                view.style.display = 'none';
+            });
+
+            // 2. Mostrar la vista solicitada
+            document.getElementById(viewId).style.display = 'block';
+            
+            // 3. Cerrar el menú lateral después de la selección
+            closeNav();
+        }
+
         /* Función para abrir el menú lateral */
         function openNav() {
             document.getElementById("mySidebar").style.width = "250px";
@@ -316,12 +391,15 @@
             document.getElementById("mySidebar").style.width = "0";
             document.getElementById("main").style.marginLeft= "0";
         }
+        
+        // Inicializar mostrando la vista principal (Home) al cargar la página
+        window.onload = function() {
+            showView('home-view');
+        };
     </script>
 
 </body>
 </html>
-
-
 
 
 
